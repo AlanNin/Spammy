@@ -3,16 +3,11 @@ import axios from "axios";
 
 export async function ClassifyEmail(email: string) {
   try {
-    const result = await axios.post(
-      "https://spammy-api.onrender.com/classify",
-      {
-        email: email,
-      }
-    );
+    const result = (
+      await axios.post("https://spammy-api.onrender.com/classify", { email })
+    ).data;
 
-    const resultado = result.data;
-
-    return resultado;
+    return result;
   } catch (error) {
     console.log(error);
     throw new Error("Error al ejecutar o procesar el script de Python");
