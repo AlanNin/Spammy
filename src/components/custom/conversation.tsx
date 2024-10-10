@@ -1,6 +1,6 @@
 "use client";
 import CustomInput from "./input";
-import { ResultsProps } from "../page";
+import { ResultsProps } from "../../app/page";
 import SpammyIcon from "~/../public/icons/Spammy-Icon.png";
 import { useState } from "react";
 import { Copy, Info } from "lucide-react";

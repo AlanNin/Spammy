@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import { ClasifyEmail } from "~/server/spam_classifier";
-import Start from "./_components/start";
-import Conversation from "./_components/conversation";
+import { ClassifyEmail } from "~/server/queries/spam_classifier";
+import Start from "../components/custom/start";
+import Conversation from "../components/custom/conversation";
 import { toast } from "sonner";
 
 // results type
@@ -42,7 +42,7 @@ export default function HomePage() {
       return;
     }
     setIsProcessing(true);
-    const result = await ClasifyEmail(email);
+    const result = await ClassifyEmail(email);
     if (result) {
       setResults((prevResults) => [
         ...prevResults,
