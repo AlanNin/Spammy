@@ -1,0 +1,15 @@
+{
+  "build": {
+    "env": {
+      "PYTHON_VERSION": "3.9"
+    },
+    "commands": {
+      "install": "pip install -r requirements.txt"
+    }
+  },
+  "functions": {
+    "api/**": {
+      "maxDuration": 10
+    }
+  }
+}
