@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ClasifyEmail } from "~/server/spam_classifier";
 import Start from "./_components/start";
 import Conversation from "./_components/conversation";
+import { toast } from "sonner";
 
 // results type
 export type ResultsProps = {
@@ -37,7 +38,7 @@ export default function HomePage() {
   // define classify email
   const classifyEmail = async () => {
     if (!email) {
-      alert("Please enter an email.");
+      toast("⚠ Please enter an email.");
       return;
     }
     setIsProcessing(true);
@@ -56,12 +57,12 @@ export default function HomePage() {
       setIsProcessing(false);
     } else {
       setIsProcessing(false);
-      alert("Something went wrong. Please try again later.");
+      toast("⚠ Something went wrong. Please try again later.");
     }
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#292929] to-[#222222] text-center text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#292929] to-[#222222] text-center text-white ">
       <div className="h-full w-full items-center justify-center">
         {results && results.length > 0 ? (
           <Conversation
