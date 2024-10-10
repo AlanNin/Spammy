@@ -3,8 +3,9 @@ import joblib
 import json
 
 # Cargar el modelo y el vectorizador
-model = joblib.load('Modelo_Clasificación_Spam.pkl')
-vectorizer = joblib.load('CountVectorizer_Spam.pkl')
+model = joblib.load('C:/Users/HP/Downloads/VS Code/ai_spam_detector/src/model/Modelo_Clasificacion_Spam.pkl')
+vectorizer = joblib.load('C:/Users/HP/Downloads/VS Code/ai_spam_detector/src/model/CountVectorizer_Spam.pkl')
+
 
 # Tomar el correo como argumento
 correo = sys.argv[1]

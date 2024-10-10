@@ -1,36 +1,90 @@
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import { ClasifyEmail } from "~/server/spam_classifier";
+import Start from "./_components/start";
+import Conversation from "./_components/conversation";
+
+// results type
+export type ResultsProps = {
+  email: string;
+  result: string;
+  spam_probability: number;
+  ham_probability: number;
+};
 
 export default function HomePage() {
+  // define results state
+  const [results, setResults] = useState<ResultsProps[]>([]);
+
+  // define email state
+  const [email, setEmail] = useState("");
+
+  // define change email
+  const handleChange = (e: any) => {
+    setEmail(e.target.value);
+  };
+
+  // define is processing
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  // define re-start
+  const reStart = () => {
+    setEmail("");
+    setResults([]);
+    setIsProcessing(false);
+  };
+
+  // define classify email
+  const classifyEmail = async () => {
+    if (!email) {
+      alert("Please enter an email.");
+      return;
+    }
+    setIsProcessing(true);
+    const result = await ClasifyEmail(email);
+    if (result) {
+      setResults((prevResults) => [
+        ...prevResults,
+        {
+          email: email,
+          result: result.resultado,
+          spam_probability: result.probabilidad_spam,
+          ham_probability: result.probabilidad_no_spam,
+        },
+      ]);
+      setEmail("");
+      setIsProcessing(false);
+    } else {
+      setIsProcessing(false);
+      alert("Something went wrong. Please try again later.");
+    }
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#292929] to-[#222222] text-center text-white">
+      <div className="h-full w-full items-center justify-center">
+        {results && results.length > 0 ? (
+          <Conversation
+            results={results}
+            value={email}
+            onChange={handleChange}
+            onSubmit={classifyEmail}
+            isProcessing={isProcessing}
+            reStart={reStart}
+          />
+        ) : (
+          <div className="flex h-full min-h-screen w-full flex-col items-center justify-center">
+            <Start
+              value={email}
+              onChange={handleChange}
+              onSubmit={classifyEmail}
+              isProcessing={isProcessing}
+            />
+            <p className="mb-4 mt-auto self-center text-sm text-white/50">
+              Please remember, Spammy can make mistakes.
+            </p>
+          </div>
+        )}
       </div>
     </main>
   );
