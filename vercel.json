@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    }
+  ],
+  "env": {
+    "PYTHON_VERSION": "3.x"
+  },
+  "hooks": {
+    "build": {
+      "commands": ["pip install -r requirements.txt"]
+    }
+  }
+}
