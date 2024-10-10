@@ -17,7 +17,7 @@ function Start({ value, onChange, onSubmit, isProcessing }: Props) {
         <WritingText
           text="Your AI-Powered tool for detecting spam emails."
           duration={25}
-          style="text-white/70 max-md:text-base"
+          style="text-xl font-medium text-white/70 max-md:text-base"
         />
       </div>
       <div className="w-full max-w-[600px]">

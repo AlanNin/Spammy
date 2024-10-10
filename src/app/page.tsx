@@ -42,7 +42,9 @@ export default function HomePage() {
       return;
     }
     setIsProcessing(true);
+
     const result = await ClassifyEmail(email);
+
     if (result) {
       setResults((prevResults) => [
         ...prevResults,
@@ -53,7 +55,9 @@ export default function HomePage() {
           ham_probability: result.probabilidad_no_spam,
         },
       ]);
+
       setEmail("");
+
       setIsProcessing(false);
     } else {
       setIsProcessing(false);
@@ -62,7 +66,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#292929] to-[#222222] text-center text-white ">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-[#222222] text-center text-white ">
       <div className="h-full w-full items-center justify-center">
         {results && results.length > 0 ? (
           <Conversation

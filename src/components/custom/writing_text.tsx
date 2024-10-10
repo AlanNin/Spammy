@@ -26,7 +26,7 @@ function WritingText({ text, style, duration, end_char }: Props) {
 
   return (
     <motion.p
-      className={`text-xl font-medium ${style && `${style}`}`}
+      className={` ${style}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
