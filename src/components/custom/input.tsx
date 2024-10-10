@@ -1,4 +1,6 @@
+"use client";
 import { Loader, SendHorizontal } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 // types
 type Props = {
@@ -20,6 +22,16 @@ function CustomInput({
   isProcessing,
   color,
 }: Props) {
+  // define input ref
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // focus input after re-enable
+  useEffect(() => {
+    if (!isProcessing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isProcessing]);
+
   return (
     <div className="relative h-max w-full">
       <input
@@ -39,6 +51,8 @@ function CustomInput({
         }}
         autoComplete="off"
         disabled={isProcessing}
+        ref={inputRef}
+        autoFocus
       />
       <div className="absolute right-3 top-1/2 -translate-y-1/2">
         {isProcessing ? (

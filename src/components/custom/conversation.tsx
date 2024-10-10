@@ -73,7 +73,7 @@ export default function Conversation({
         className="relative flex flex-col overflow-y-auto overflow-x-clip w-full h-full pt-48"
         ref={scrollableRef}
       >
-        <div className="fixed top-0 flex flex-col gap-1 p-16 self-center max-w-[980px] w-full z-10 bg-[#222222]">
+        <div className="fixed top-0 flex flex-col gap-1 p-16 self-center max-w-[980px] w-[calc(100%-15px)] z-10 bg-[#222222]">
           <h1
             className=" cursor-pointer text-3xl font-semibold tracking-wide text-white/90"
             onClick={reStart}
