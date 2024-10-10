@@ -82,7 +82,7 @@ export default function HomePage() {
               isProcessing={isProcessing}
             />
             <p className="mb-4 mt-auto self-center text-sm text-white/50">
-              Please remember, Spammy can make mistakes.
+              Please remember, Spammy can make mistakes. Developed by Alan Nin.
             </p>
           </div>
         )}
