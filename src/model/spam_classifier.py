@@ -1,11 +1,18 @@
 import sys
 import joblib
 import json
+import os
 
-# Cargar el modelo y el vectorizador
-model = joblib.load('C:/Users/HP/Downloads/VS Code/ai_spam_detector/src/model/Modelo_Clasificacion_Spam.pkl')
-vectorizer = joblib.load('C:/Users/HP/Downloads/VS Code/ai_spam_detector/src/model/CountVectorizer_Spam.pkl')
+# Obtener el directorio raíz del proyecto
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.join(current_dir, '..', '..')
 
+# Cargar el modelo y el vectorizador desde el directorio raíz
+model_path = os.path.join(root_dir, 'src', 'model', 'Modelo_Clasificacion_Spam.pkl')
+vectorizer_path = os.path.join(root_dir, 'src', 'model', 'CountVectorizer_Spam.pkl')
+
+model = joblib.load(model_path)
+vectorizer = joblib.load(vectorizer_path)
 
 # Tomar el correo como argumento
 correo = sys.argv[1]

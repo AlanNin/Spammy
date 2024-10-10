@@ -2,16 +2,19 @@
 
 import { exec } from "child_process";
 import { promisify } from "util";
+import path from "path";
 
 const execAsync = promisify(exec);
 
 export async function ClasifyEmail(email: string) {
   try {
-    const scriptPath =
-      '"C:/Users/HP/Downloads/VS Code/ai_spam_detector/src/model/spam_classifier.py"';
+    const scriptPath = path.resolve(
+      __dirname,
+      "../../../src/model/spam_classifier.py"
+    );
 
     // Ejecutar el script de Python de manera asíncrona
-    const { stdout } = await execAsync(`python3 ${scriptPath} "${email}"`);
+    const { stdout } = await execAsync(`python3 "${scriptPath}" "${email}"`);
 
     // Parsear la salida del script (que es JSON)
     const resultado = JSON.parse(stdout);
