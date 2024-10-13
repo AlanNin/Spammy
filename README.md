@@ -66,4 +66,4 @@
 
 ## Contact
 
-For inquiries, suggestions, or bug reports, please contact us at [support@spammy.com](mailto:support@spammy.com).
+For any inquiries, feel free to reach me out at [alanbusinessnin@gmail.com](alanbusinessnin@gmail.com).
