@@ -1,29 +1,69 @@
-# Create T3 App
+# Spammy - AI-Powered Email Spam Detection
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+![Spammy Homepage](./public/assets/homepage-screenshot.png)
 
-## What's next? How do I make an app with this?
+**Spammy** is a web-based application that helps users detect spam emails using an advanced machine learning model. With a simple and intuitive interface, users can input email content and instantly receive feedback on whether the email is classified as spam or not, based on the trained AI model.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Features
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+### 1. **Accurate Spam Detection**
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- Spammy utilizes a custom-trained machine learning model to accurately detect spam emails.
+- The model analyzes email content based on a variety of features including text patterns, keywords, and more.
 
-## Learn More
+### 2. **User-Friendly Interface**
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- Clean and easy-to-use interface for users to input email text.
+- Instant feedback with a clear result of **Spam** or **Not Spam** after model analysis.
+- User can check the probability of the email being classified as spam or not.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### 3. **Fast and Efficient**
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- Built for speed and accuracy, Spammy processes email content in real-time.
+- Lightweight architecture ensures quick response times, even with high traffic.
 
-## How do I deploy this?
+### 4. **Secure and Private**
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- Emails are analyzed locally in the session without being stored, ensuring user privacy.
+- Secure encryption is used for communication between the client and server.
+
+### 5. **Custom AI Model**
+
+- Developed with a custom machine learning model trained on a large dataset of spam and non-spam emails.
+- Regular updates ensure that Spammy remains effective in detecting evolving spam techniques.
+
+## Technology Stack
+
+- **Frontend**: Next.js (React)
+- **Backend**: Python (FastAPI)
+- **Machine Learning**: Custom-built model using Python and scikit-learn
+- **Deployment**: Vercel (Frontend) and Koyeb (Backend)
+- **Security**: HTTPS, encryption for secure communication
+
+## How It Works
+
+1. **Input**: Users can paste or type the email content they want analyzed into the text box.
+2. **Detection**: The machine learning model processes the input and runs it through the trained spam detection model.
+3. **Result**: Spammy will output the result, either **Spam** or **Not Spam**, with a brief explanation of the analysis.
+
+## How to Get Started
+
+1. Visit our live website: [Spammy](https://spammy.vercel.app)
+2. Type your email content into the presented input and press and enter!
+3. Done! Now you can check the result of your email being classified as spam or not.
+
+## Model Details
+
+- **Algorithm**: The model is based on [Logistic Regression](https://scikit-learn.org/stable/modules), which is particularly effective for text classification tasks like spam detection.
+- **Training Dataset**: The model was trained on thousands of emails labeled as spam and non-spam to achieve high accuracy.
+- **Continuous Improvement**: The model is regularly updated with new data to ensure it stays effective against new spam techniques.
+
+## Future Improvements
+
+- **Multiple Language Support**: Expand detection capabilities to analyze emails in different languages.
+- **Enhanced Explanation**: Provide users with more detailed reasons why an email was classified as spam.
+- **Mobile App**: Develop a mobile-friendly version of Spammy for on-the-go detection.
+
+## Contact
+
+For inquiries, suggestions, or bug reports, please contact us at [support@spammy.com](mailto:support@spammy.com).
