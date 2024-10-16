@@ -38,35 +38,40 @@ export default function HomePage() {
   // define classify email
   const classifyEmail = async () => {
     if (!email) {
-      toast("⚠ Please enter an email.");
+      toast.warning("Please enter an email.");
       return;
     }
-    setIsProcessing(true);
+    try {
+      setIsProcessing(true);
 
-    const result = await ClassifyEmail(email);
+      const result = await ClassifyEmail(email);
 
-    if (result) {
-      setResults((prevResults) => [
-        ...prevResults,
-        {
-          email: email,
-          result: result.resultado,
-          spam_probability: result.probabilidad_spam,
-          ham_probability: result.probabilidad_no_spam,
-        },
-      ]);
+      if (result) {
+        setResults((prevResults) => [
+          ...prevResults,
+          {
+            email: email,
+            result: result.resultado,
+            spam_probability: result.probabilidad_spam,
+            ham_probability: result.probabilidad_no_spam,
+          },
+        ]);
 
-      setEmail("");
+        setEmail("");
 
+        setIsProcessing(false);
+      } else {
+        setIsProcessing(false);
+        toast.error("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
       setIsProcessing(false);
-    } else {
-      setIsProcessing(false);
-      toast("⚠ Something went wrong. Please try again later.");
+      toast.error("Something went wrong. Please try again later.");
     }
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-[#222222] text-center text-white ">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-[#222222] text-center text-white">
       <div className="h-full w-full items-center justify-center">
         {results && results.length > 0 ? (
           <Conversation

@@ -6,7 +6,7 @@ export async function ClassifyEmail(email: string) {
     const result = (
       await axios.post(
         "https://territorial-ariel-alan-organization-edc3cd2e.koyeb.app/classify",
-        { email }
+        { email },
       )
     ).data;
 
