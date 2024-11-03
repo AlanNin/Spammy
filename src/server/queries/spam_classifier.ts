@@ -4,10 +4,7 @@ import axios from "axios";
 export async function ClassifyEmail(email: string) {
   try {
     const result = (
-      await axios.post(
-        "https://territorial-ariel-alan-organization-edc3cd2e.koyeb.app/classify",
-        { email }
-      )
+      await axios.post("https://spammy-api.onrender.com/classify", { email })
     ).data;
 
     return result;

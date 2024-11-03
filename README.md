@@ -37,7 +37,7 @@
 - **Frontend**: Next.js (React)
 - **Backend**: Python (FastAPI)
 - **Machine Learning**: Custom-built model using Python and scikit-learn
-- **Deployment**: Vercel (Frontend) and Koyeb (Backend)
+- **Deployment**: Vercel (Frontend) and Render (Backend)
 - **Security**: HTTPS, encryption for secure communication
 
 ## How It Works
