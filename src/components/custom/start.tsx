@@ -15,7 +15,7 @@ function Start({ value, onChange, onSubmit, isProcessing }: Props) {
       <div className="flex flex-col items-center gap-2">
         <h1 className="text-4xl font-semibold tracking-wide">Spammy</h1>
         <WritingText
-          text="Your AI-Powered tool for detecting spam emails. 🐶"
+          text="Your AI-Powered tool for detecting spam emails. 💫"
           duration={25}
           style="text-xl font-medium text-white/70 max-md:text-base"
         />
